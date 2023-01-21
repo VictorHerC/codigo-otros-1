@@ -4,20 +4,19 @@ const $n = document.querySelector('.name');
 const $b = document.querySelector('.blog');
 const $l = document.querySelector('.location');
 
-
 async function displayUser(username) {
-  try{
-  $n.textContent = 'cargando...';
-  const response = await fetch(`${usersEndpoint}/${username}`);
-  const data = await response.json ();
-  $n.textContent = data.name;
-  $n.textContent = data.blog;
-  $n.textContent = data.location;
+  try {
+    $n.textContent = 'cargando...';
+    const response = await fetch(`${usersEndpoint}/${username}`);
+    const data = await response.json();
+    $n.textContent = data.name;
+    $b.textContent = data.blog;
+    $l.textContent = data.location;
   } catch (err) {
-    handleError(err)
-  
+    handleError(err);
+  }
 }
-}
+
 function handleError(err) {
   console.log('OH NO!');
   console.log(err);
